@@ -50,18 +50,26 @@ const operatorType = (e) => {
       setTotal(true)
     }
      let cal;
+
+     
      if (operator === "/") {
-       cal = String(parseFloat(prevState) / parseFloat(currState));
-       console.log(cal);
-     } else if (operator === "+") {
-       cal = String(parseFloat(prevState) + parseFloat(currState));
-       console.log(cal);
+       cal = String(
+         parseFloat(prevState) / parseFloat(currState ? currState : "1")
+       );
+      //  console.log(cal);
+     } else if (operator === "+") {      
+       cal = String(parseFloat(prevState) + parseFloat(currState ? currState : '0'));
+      //  console.log(cal);
      } else if (operator === "x") {
-       cal = String(parseFloat(prevState) * parseFloat(currState));
-       console.log(cal);
+       cal = String(
+         parseFloat(prevState) * parseFloat(currState ? currState : '1')
+       );
+      //  console.log(cal);
      } else if (operator === "-") {
-       cal = String(parseFloat(prevState) - parseFloat(currState));
-       console.log(cal);
+       cal = String(
+         parseFloat(prevState) - parseFloat(currState ? currState : '0')
+       );
+      //  console.log(cal);
      }
      
      setInput("");
@@ -91,7 +99,7 @@ const operatorType = (e) => {
     <div className="container">
       <div className="calculator">
         <div className="display">
-          {total ? prevState : input}
+          {total ? prevState  : input }
         </div>
         <div className="btn light-gray" onClick={clear}>
           AC
